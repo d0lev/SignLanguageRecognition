@@ -19,15 +19,7 @@ class Data:
     # image represent by (28 * 28) matrix
 
     def __init__(self):
-        self.train_set = np.array(pd.read_csv("sign_mnist_train.csv"))
-        self.test_set = np.array(pd.read_csv("sign_mnist_test.csv"))
         self.grayscale = 255
-        self.x_train = (self.train_set[:, 1:] / self.grayscale)
-        self.y_train = keras.utils.to_categorical(self.train_set[:, 0:1])
-
-        self.x_test = (self.test_set[:, 1:] / 255)
-        self.y_test = keras.utils.to_categorical(self.test_set[:, 0:1])
-
         self.labels = ['A', 'B', 'C', 'D', 'E',
                        'F', 'G', 'H', 'I', 'J',
                        'K', 'L', 'M', 'N', 'O',
@@ -35,7 +27,19 @@ class Data:
                        'U', 'V', 'W', 'X', 'Y']
 
         self.classes = len(self.labels)
+
+        self.train_set = np.array(pd.read_csv("sign_mnist_train.csv"))
+        self.x_train = (self.train_set[:, 1:] / self.grayscale)
+        self.y_train = self.train_set[:, 0]
+        self.y_train = keras.utils.to_categorical(self.y_train, self.classes)
+
+        self.test_set = np.array(pd.read_csv("sign_mnist_test.csv"))
+        self.x_test = (self.test_set[:, 1:] / self.grayscale)
+        self.y_test = self.test_set[:, 0]
+        self.y_test = keras.utils.to_categorical(self.y_test, self.classes)
+
         self.features = (self.train_set.shape[1] - 1)
+        print(self.features)
 
     def plotting_image(self):
         i = random.randint(1, 27455)
