@@ -52,3 +52,5 @@ class Data:
 dataset = Data()
 nn = NeuralNetwork(dataset)
 nn.model()
+# nn.plot_accuracy()
+# nn.plot_loss_function()
