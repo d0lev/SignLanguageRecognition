@@ -18,6 +18,7 @@ class Data:
 
     def __init__(self):
         self.grayscale = 255
+
         self.labels = ['A', 'B', 'C', 'D', 'E',
                        'F', 'G', 'H', 'I', 'J',
                        'K', 'L', 'M', 'N', 'O',
@@ -48,5 +49,8 @@ class Data:
 
 
 dataset = Data()
+
 cnn = ConvolutionalNeuralNetwork(dataset)
 cnn.model()
+cnn.plot_accuracy()
+cnn.plot_loss_function()
