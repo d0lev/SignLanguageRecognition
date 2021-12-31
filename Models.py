@@ -1,12 +1,10 @@
-import tensorflow.compat.v1 as tf
 import tensorflow.keras as keras
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import random
 from NeuralNetwork import *
-import sys
-
+from ConvolutionalNeuralNetwork import *
 tf.compat.v1.disable_eager_execution()
 
 
@@ -50,7 +48,5 @@ class Data:
 
 
 dataset = Data()
-nn = NeuralNetwork(dataset)
-nn.model()
-# nn.plot_accuracy()
-# nn.plot_loss_function()
+cnn = ConvolutionalNeuralNetwork(dataset)
+cnn.model()

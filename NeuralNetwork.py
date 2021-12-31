@@ -38,3 +38,5 @@ class NeuralNetwork:
         plt.xlabel("Epoch")
         plt.legend(['train set', 'validation set'], loc = 'upper left')
         plt.show()
+
+
