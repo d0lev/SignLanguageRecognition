@@ -3,7 +3,6 @@ import tensorflow.keras as keras
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import random
 
 from keras import Sequential
 from keras.layers import *
