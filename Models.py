@@ -53,14 +53,6 @@ class Data:
 
 
 dataset = Data()
-# print(dataset.train_set.size)
-# LR = LogisticRegression(dataset)
-# LR.model()
-# LR.plotLoss()
-# LR.plotAccuracy()
-# # nn = NeuralNetwork(dataset)
-# nn.model()
-
 cnn = ConvolutionalNeuralNetwork(dataset)
 cnn.model()
 cnn.plot_accuracy()
