@@ -1,9 +1,13 @@
+import tensorflow.compat.v1 as tf
 import tensorflow.keras as keras
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import random
 from NeuralNetwork import *
+from LogisticRegression import LogisticRegression
+import sys
+
 from ConvolutionalNeuralNetwork import *
 tf.compat.v1.disable_eager_execution()
 
@@ -30,12 +34,12 @@ class Data:
         self.train_set = np.array(pd.read_csv("sign_mnist_train.csv"))
         self.x_train = (self.train_set[:, 1:] / self.grayscale)
         self.y_train = self.train_set[:, 0]
-        self.y_train = keras.utils.to_categorical(self.y_train, self.classes)
+        self.y_train_cat = keras.utils.to_categorical(self.y_train, self.classes)
 
         self.test_set = np.array(pd.read_csv("sign_mnist_test.csv"))
         self.x_test = (self.test_set[:, 1:] / self.grayscale)
         self.y_test = self.test_set[:, 0]
-        self.y_test = keras.utils.to_categorical(self.y_test, self.classes)
+        self.y_test_cat = keras.utils.to_categorical(self.y_test, self.classes)
 
         self.features = (self.train_set.shape[1] - 1)
         print(self.features)
@@ -49,8 +53,17 @@ class Data:
 
 
 dataset = Data()
+# print(dataset.train_set.size)
+# LR = LogisticRegression(dataset)
+# LR.model()
+# LR.plotLoss()
+# LR.plotAccuracy()
+# # nn = NeuralNetwork(dataset)
+# nn.model()
 
 cnn = ConvolutionalNeuralNetwork(dataset)
 cnn.model()
 cnn.plot_accuracy()
 cnn.plot_loss_function()
+cnn.plot_confusion_matrix()
+cnn.plot_fractional_misclassifications()
