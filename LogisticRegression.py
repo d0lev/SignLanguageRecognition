@@ -47,11 +47,11 @@ class LogisticRegression:
         for epoch in range(15):
             for row in range(100):
                 batch_x = self.dataset.x_train[row * batch_size : (row + 1) * (batch_size-1)]
-                batch_y = self.dataset.y_train[row * batch_size : (row + 1) * (batch_size-1)]
+                batch_y = self.dataset.y_train_cat[row * batch_size : (row + 1) * (batch_size-1)]
 
                 _, loss_validation = sess.run([update, loss], feed_dict={x: batch_x, y_: batch_y})
                 temp_loss, temp_train_acc = sess.run([loss, accuracy], feed_dict={x: batch_x, y_: batch_y})
-            temp_test_acc = sess.run(accuracy, feed_dict={x: self.dataset.x_test, y_: self.dataset.y_test})
+            temp_test_acc = sess.run(accuracy, feed_dict={x: self.dataset.x_test, y_: self.dataset.y_test_cat})
             self.loss_trace.append(temp_loss)
             self.train_acc.append(temp_train_acc)
             self.test_acc.append(temp_test_acc)

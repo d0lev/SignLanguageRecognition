@@ -18,8 +18,8 @@ class NeuralNetwork:
         self.nn.add(Dropout(0.1))
         self.nn.add(Dense(self.data.classes, activation = 'softmax'))
         self.nn.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
-        self.history = self.nn.fit(self.data.x_train, self.data.y_train, epochs = 30, batch_size = 50, validation_split = 0.2)
-        print(self.nn.evaluate(self.data.x_test, self.data.y_test, verbose = 0))
+        self.history = self.nn.fit(self.data.x_train, self.data.y_train_cat, epochs = 30, batch_size = 50, validation_split = 0.2)
+        print(self.nn.evaluate(self.data.x_test, self.data.y_test_cat, verbose = 0))
 
     def plot_accuracy(self):
         plt.plot(self.history.history['accuracy'])
